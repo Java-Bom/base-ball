@@ -1,7 +1,7 @@
 package com.javabom.baseballgame.domain;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
+import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
@@ -11,8 +11,9 @@ public class BaseballNumbers {
     private final List<IndexedBaseballNumber> values;
 
     public BaseballNumbers(final List<BaseballNumber> values) {
+        validateNumbersSize(values);
+        validateDuplicatedNumbers(values);
         this.values = convertToIndexed(values);
-        validateNumbersSize();
     }
 
     private List<IndexedBaseballNumber> convertToIndexed(final List<BaseballNumber> numbers) {
@@ -26,9 +27,16 @@ public class BaseballNumbers {
     // 아예 생성자에서 IndexedBaseballNumber의 List를 받는게 맞는걸까요.
     // 제 생각에는 이 생성자를 거침으로써 숫자들의 순서의 의미가 생긴다고 생각하여 이곳에서 인덱스를 부여해주었습니다.
 
-    private void validateNumbersSize() {
+    private void validateNumbersSize(List<BaseballNumber> values) {
         if (values.size() != NUMBERS_PICK_SIZE) {
-            throw new IllegalArgumentException(String.format("야구 숫자의 개수는 반드시 3개입니다. 입력 값 : %d", values.size()));
+            throw new IllegalArgumentException(String.format("야구 숫자의 개수는 반드시 3개입니다. 입력 개수 : %d", values.size()));
+        }
+    }
+
+    private void validateDuplicatedNumbers(List<BaseballNumber> values) {
+        int distinctNumberSize = new HashSet<>(values).size();
+        if (distinctNumberSize != NUMBERS_PICK_SIZE) {
+            throw new IllegalArgumentException(String.format("야구 숫자는 중복될 수 없습니다. 입력 값 : %s", values.toString()));
         }
     }
 
@@ -53,4 +61,16 @@ public class BaseballNumbers {
                 .anyMatch(indexedNumber -> indexedNumber.equalsOnlyNumber(number));
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseballNumbers that = (BaseballNumbers) o;
+        return Objects.equals(values, that.values);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(values);
+    }
 }
