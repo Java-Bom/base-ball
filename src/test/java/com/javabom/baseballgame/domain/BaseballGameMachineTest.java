@@ -3,7 +3,6 @@ package com.javabom.baseballgame.domain;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
