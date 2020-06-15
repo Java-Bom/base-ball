@@ -14,4 +14,9 @@ public class GameResults {
                 .filter(result -> result == specificResult)
                 .count();
     }
+
+    public boolean isSolved() {
+        return results.stream()
+                .allMatch(result -> result == GameResult.STRIKE);
+    }
 }
