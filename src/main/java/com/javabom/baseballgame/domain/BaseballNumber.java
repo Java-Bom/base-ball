@@ -1,5 +1,7 @@
 package com.javabom.baseballgame.domain;
 
+import java.util.Objects;
+
 public class BaseballNumber {
     public static final int MIN_NUMBER = 0;
     public static final int MAX_NUMBER = 9;
@@ -18,6 +20,19 @@ public class BaseballNumber {
         if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException(String.format("야구 숫자는 0 ~ 9 사이입니다. 입력 값 : %d", number));
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        BaseballNumber that = (BaseballNumber) o;
+        return value == that.value;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(value);
     }
 
     @Override
