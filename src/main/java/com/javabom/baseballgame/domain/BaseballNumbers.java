@@ -3,7 +3,7 @@ package com.javabom.baseballgame.domain;
 import java.util.List;
 
 public class BaseballNumbers {
-    private static final int NUMBERS_PICK_SIZE = 3;
+    public static final int NUMBERS_PICK_SIZE = 3;
     private final List<BaseballNumber> numbers;
 
     public BaseballNumbers(final List<BaseballNumber> numbers) {

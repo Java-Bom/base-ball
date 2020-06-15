@@ -1,6 +1,8 @@
 package com.javabom.baseballgame.domain;
 
 public class BaseballNumber {
+    public static final int MIN_NUMBER = 0;
+    public static final int MAX_NUMBER = 9;
     private final int value;
 
     private BaseballNumber(final int value) {
@@ -13,7 +15,7 @@ public class BaseballNumber {
     }
 
     private static void validateBaseballNumberRange(final int number) {
-        if (number < BaseballNumberCache.MIN_NUMBER || number > BaseballNumberCache.MAX_NUMBER) {
+        if (number < MIN_NUMBER || number > MAX_NUMBER) {
             throw new IllegalArgumentException(String.format("야구 숫자는 0 ~ 9 사이입니다. 입력 값 : %d", number));
         }
     }
@@ -25,8 +27,6 @@ public class BaseballNumber {
 
     private static class BaseballNumberCache {
         private static final BaseballNumber[] CACHE;
-        private static final int MIN_NUMBER = 0;
-        private static final int MAX_NUMBER = 9;
 
         private BaseballNumberCache() {
         }
