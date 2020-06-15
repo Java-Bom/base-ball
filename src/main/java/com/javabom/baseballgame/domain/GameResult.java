@@ -1,6 +1,6 @@
 package com.javabom.baseballgame.domain;
 
-enum GameResult {
+public enum GameResult {
     BALL,
     STRIKE,
     OUT;
