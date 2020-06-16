@@ -1,6 +1,7 @@
 package com.javabom.baseballgame.number;
 
 import java.util.Map;
+import java.util.Objects;
 import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toMap;
@@ -24,6 +25,19 @@ public class Position implements Comparable<Position> {
         if (position < POSITION_MIN || position > POSITION_MAX) {
             throw new IllegalArgumentException("숫자의 위치는 1 ~ 3 사이의 값이어야 합니다. - " + position);
         }
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Position)) return false;
+        Position position1 = (Position) o;
+        return position == position1.position;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(position);
     }
 
     @Override
