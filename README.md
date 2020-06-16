@@ -58,3 +58,16 @@
 
 5. PR은 step1/[자신의 이니셜]에서 [자신의 이니셜] 브랜치로 보내주세요
 
+## 기능 구현 사항
+1. 야구게임에 사용하는 숫자 클래스 BallNumber
+2. 숫자를 미리 캐싱할 BallNumberCache
+3. 숫자의 위치 Position
+4. BallNumber 와 Position 값을 가지고 실제 게임에 참여하는 BaseBallNumber
+5. BallNumber 를 생성하는 BallGenerator
+6. BaseBallNumber 리스트를 감싸는 일급컬렉션 BaseBallNumbers
+7. 숫자 야구 게임을 진행하는 BaseBallGame
+8. Strike, Ball, Out 정보를 가지는 BaseBallRule
+9. 예측 결과들을 가지는 PredictionResult
+10. 출력 담당 OutputView
+11. 입력 담당 InputView
+
