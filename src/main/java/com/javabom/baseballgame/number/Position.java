@@ -5,7 +5,7 @@ import java.util.stream.IntStream;
 
 import static java.util.stream.Collectors.toMap;
 
-public class Position {
+public class Position implements Comparable<Position> {
     private static final int POSITION_MIN = 1;
     private static final int POSITION_MAX = 3;
 
@@ -24,6 +24,11 @@ public class Position {
         if (position < POSITION_MIN || position > POSITION_MAX) {
             throw new IllegalArgumentException("숫자의 위치는 1 ~ 3 사이의 값이어야 합니다. - " + position);
         }
+    }
+
+    @Override
+    public int compareTo(final Position o) {
+        return Integer.compare(this.position, o.position);
     }
 
     private static class PositionCache {
