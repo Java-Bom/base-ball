@@ -1,5 +1,7 @@
 package com.javabom.baseballgame.number;
 
+import com.javabom.baseballgame.rule.Rule;
+
 import java.util.Objects;
 
 public class BaseBallNumber implements Comparable<BaseBallNumber> {
@@ -9,6 +11,18 @@ public class BaseBallNumber implements Comparable<BaseBallNumber> {
     public BaseBallNumber(int ballNumber, int position) {
         this.ballNumber = BallNumber.valueOf(ballNumber);
         this.position = Position.valueOf(position);
+    }
+
+    public Rule match(BaseBallNumber baseBallNumber) {
+        if (this.equals(baseBallNumber)) {
+            return Rule.STRIKE;
+        }
+
+        if (this.ballNumber.equals(baseBallNumber.ballNumber)) {
+            return Rule.BALL;
+        }
+
+        return Rule.OUT;
     }
 
     @Override
