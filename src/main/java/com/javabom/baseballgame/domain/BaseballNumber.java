@@ -6,9 +6,13 @@ public class BaseballNumber {
     private final Order order;
     private final int value;
 
-    public BaseballNumber(final Order order, final int value) {
+    private BaseballNumber(final Order order, final int value) {
         this.order = order;
         this.value = value;
+    }
+
+    public static BaseballNumber of(final Order order, final int value) {
+        return new BaseballNumber(order, value);
     }
 
     public boolean equalsNumber(final BaseballNumber number) {
