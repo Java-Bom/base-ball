@@ -1,3 +1,33 @@
+# Step1
+- BaseballNumber: 숫자와 순서를 가진다
+-> vo: Order 
+
+- BaseballResultProcessor: 입력에따른 결과를 반환한다
+-> Contains --true--> 순서 --true--> 1STRIKE
+                          --false--> 1BALL
+            --false--> 1OUT
+
+- Result: enum -> STRIKE, BALL, OUT
+
+- InputView, OutputView
+ 
+
+**BaseballGameSystem**
+1. 랜덤한 숫자 3개를 뽑는다 (중복 X, 순서 O)
+2. 사용자의 입력에 따른 결과를 반환한다
+
+  `예측한 숫자가 번호는 같지만 순서가 다르다면 BALL
+  예측한 숫자가 번호도 순서도 같다면 STRIKE
+  예측한 숫자가 순서도, 번호도 틀리다면 OUT`
+
+
+**View**
+while(!STRIKE){
+    - 사용자에게 번호를 입력받는다(중복 X, 순서 O)
+    - 결과를 출력한다 
+}
+
+
 # 숫자 야구 게임
 숫자 야구 게임을 진행한다.
 
