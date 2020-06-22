@@ -39,7 +39,7 @@ public class Order {
             cache = new Order[END_BOUND + 1];
 
             for (int i = 1; i <= END_BOUND; i++) {
-                cache[i] = Order.valueOf(i);
+                cache[i] = new Order(i);
             }
         }
 
