@@ -19,5 +19,4 @@ public class BaseballGame {
                 .map(systemNumbers::calculate)
                 .collect(Collectors.collectingAndThen(toList(), BaseballGameOutputs::new));
     }
-
 }

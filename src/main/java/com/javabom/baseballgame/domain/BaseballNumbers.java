@@ -9,6 +9,7 @@ public class BaseballNumbers {
     private static final int COUNT = 3;
     private final Set<BaseballNumber> values;
 
+    //TODO: Order, Number 중복체크
     public BaseballNumbers(final Set<BaseballNumber> values) {
         this.values = values;
         if (values.size() != COUNT) {

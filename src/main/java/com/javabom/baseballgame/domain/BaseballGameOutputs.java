@@ -8,4 +8,10 @@ public class BaseballGameOutputs {
     public BaseballGameOutputs(final List<GameOutput> outputs) {
         this.outputs = outputs;
     }
+
+    public int countOf(final GameOutput output) {
+        return Math.toIntExact(outputs.stream()
+                .filter(output::equals)
+                .count());
+    }
 }
