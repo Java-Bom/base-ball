@@ -66,8 +66,8 @@
 5. BallNumber 를 생성하는 BallGenerator
 6. BaseBallNumber 리스트를 감싸는 일급컬렉션 BaseBallNumbers
 7. 숫자 야구 게임을 진행하는 BaseBallGame
-8. Strike, Ball, Out 정보를 가지는 BaseBallRule
-9. 예측 결과들을 가지는 PredictionResult
+8. Strike, Ball, Out 정보를 가지는 Rule
+9. 예측 결과들을 가지는 PredicateResult
 10. 출력 담당 OutputView
 11. 입력 담당 InputView
 
