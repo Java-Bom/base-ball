@@ -19,7 +19,7 @@ class BaseballGameTest {
         BaseballNumbers userNumbers = create(1, 3, 4);
 
         //when
-        BaseballGameOutputs output = game.calculatOutput(userNumbers);
+        BaseballGameOutputs output = game.calculate(userNumbers);
 
         //then
         assertAll(

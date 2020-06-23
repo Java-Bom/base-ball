@@ -16,7 +16,7 @@ public class BaseballGameApplication {
         int tryCount = 0;
         while (isRemaining) {
             BaseballNumbers userNumbers = InputView.askUserNumbers();
-            isRemaining = OutputView.printGameOutputs(baseballGame.calculatOutput(userNumbers));
+            isRemaining = OutputView.printGameOutputs(baseballGame.calculate(userNumbers));
             tryCount += 1;
         }
 
