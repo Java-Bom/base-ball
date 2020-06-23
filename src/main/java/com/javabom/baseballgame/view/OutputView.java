@@ -5,6 +5,7 @@ import com.javabom.baseballgame.domain.BaseballGameOutputs;
 import static com.javabom.baseballgame.domain.GameOutput.*;
 
 public class OutputView {
+    private static final int COUNT = 3;
 
     public static void printSystemSettingMessage() {
         System.out.println("컴퓨터가 숫자를 뽑았습니다.");
@@ -24,7 +25,11 @@ public class OutputView {
         if (isPresentOut) {
             System.out.printf("OUT %d\t", outputs.countOf(OUT));
         }
+        System.out.println();
+        return outputs.countOf(STRIKE) != COUNT;
+    }
 
-        return isPresentStrike;
+    public static void printOf(final int tryCount) {
+        System.out.printf("최종 시도횟수 : %d회", tryCount);
     }
 }

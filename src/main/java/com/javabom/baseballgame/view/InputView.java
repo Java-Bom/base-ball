@@ -20,6 +20,7 @@ public class InputView {
     public static BaseballNumbers askUserNumbers() {
         System.out.print("사용자 입력 : \t");
         List<Integer> inputNumbers = Arrays.stream(SCANNER.next().split(DELIMITER))
+                .map(String::trim)
                 .map(Integer::parseInt)
                 .collect(Collectors.toList());
 
