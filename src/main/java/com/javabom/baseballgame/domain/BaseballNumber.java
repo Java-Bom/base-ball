@@ -1,36 +1,34 @@
 package com.javabom.baseballgame.domain;
 
-import java.util.Objects;
-
 public class BaseballNumber {
-    private final Order order;
-    private final int value;
+    private static final int START_BOUND = 0;
+    private static final int END_BOUND = 9;
 
-    private BaseballNumber(final Order order, final int value) {
-        this.order = order;
-        this.value = value;
+    private final int number;
+
+    private BaseballNumber(final int number) {
+        if (number < START_BOUND || number > END_BOUND) {
+            throw new IllegalArgumentException(String.format("야구공 숫자범위는 0-9 사이여야한다. 현재 %d", number));
+        }
+        this.number = number;
     }
 
-    public static BaseballNumber of(final Order order, final int value) {
-        return new BaseballNumber(order, value);
+    public static BaseballNumber of(final int number) {
+        return BaseballNumberCache.cache[number];
     }
 
-    public boolean equalsNumber(final BaseballNumber number) {
-        return this.value == number.value;
-    }
+    private static class BaseballNumberCache {
+        static final BaseballNumber[] cache;
 
-    @Override
-    public boolean equals(final Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        final BaseballNumber that = (BaseballNumber) o;
-        return value == that.value &&
-                Objects.equals(order, that.order);
-    }
+        static {
+            cache = new BaseballNumber[END_BOUND];
 
-    @Override
-    public int hashCode() {
-        return Objects.hash(order, value);
-    }
+            for (int i = 0; i < END_BOUND; i++) {
+                cache[i] = new BaseballNumber(i);
+            }
+        }
 
+        private BaseballNumberCache() {
+        }
+    }
 }

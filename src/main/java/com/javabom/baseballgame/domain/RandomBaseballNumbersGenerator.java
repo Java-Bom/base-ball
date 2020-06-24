@@ -22,10 +22,12 @@ public class RandomBaseballNumbersGenerator implements BaseballNumbersGenerator 
     @Override
     public BaseballNumbers generate() {
         Collections.shuffle(numbers);
-        Set<BaseballNumber> baseballNumbers = new HashSet<>();
+        Set<OrderedBaseballNumber> orderedBaseballNumbers = new HashSet<>();
         for (int order = 1; order <= COUNT; order++) {
-            baseballNumbers.add(BaseballNumber.of(Order.valueOf(order), numbers.get(order)));
+            BaseballNumber baseballNumber = BaseballNumber.of(numbers.get(order));
+            OrderedBaseballNumber orderedNumber = OrderedBaseballNumber.of(Order.valueOf(order), baseballNumber);
+            orderedBaseballNumbers.add(orderedNumber);
         }
-        return new BaseballNumbers(baseballNumbers);
+        return new BaseballNumbers(orderedBaseballNumbers);
     }
 }

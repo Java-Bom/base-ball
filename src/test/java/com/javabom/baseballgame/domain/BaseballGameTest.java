@@ -31,10 +31,10 @@ class BaseballGameTest {
     }
 
     private BaseballNumbers create(int num1, int num2, int num3) {
-        Set<BaseballNumber> numbers = new HashSet<>();
-        numbers.add(BaseballNumber.of(Order.valueOf(1), num1));
-        numbers.add(BaseballNumber.of(Order.valueOf(2), num2));
-        numbers.add(BaseballNumber.of(Order.valueOf(3), num3));
+        Set<OrderedBaseballNumber> numbers = new HashSet<>();
+        numbers.add(OrderedBaseballNumber.of(Order.valueOf(1), BaseballNumber.of(num1)));
+        numbers.add(OrderedBaseballNumber.of(Order.valueOf(2), BaseballNumber.of(num2)));
+        numbers.add(OrderedBaseballNumber.of(Order.valueOf(3), BaseballNumber.of(num3)));
         return new BaseballNumbers(numbers);
     }
 }
