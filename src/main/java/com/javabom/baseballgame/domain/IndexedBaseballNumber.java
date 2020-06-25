@@ -10,12 +10,12 @@ public class IndexedBaseballNumber {
     private final BaseballNumber value;
 
     public IndexedBaseballNumber(final int index, final BaseballNumber value) {
-        validateIndexRange(index);
         this.index = index;
         this.value = value;
+        validateIndexRange();
     }
 
-    private void validateIndexRange(final int index) {
+    private void validateIndexRange() {
         if (index < MIN_INDEX || index > MAX_INDEX) {
             throw new IllegalArgumentException(
                     String.format("IndexedBaseballNumber의 index는 0~2 입니다. 입력값 : %d", index));
