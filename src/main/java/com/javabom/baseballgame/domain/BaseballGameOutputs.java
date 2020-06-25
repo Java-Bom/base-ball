@@ -10,10 +10,7 @@ public class BaseballGameOutputs {
     }
 
     public boolean isAllStrike() {
-        int count = Math.toIntExact(outputs.stream()
-                .filter(output -> output == GameOutput.STRIKE)
-                .count());
-        return count == BaseballNumbers.COUNT;
+        return outputs.stream().allMatch(output -> output == GameOutput.STRIKE);
     }
 
     public int countOf(final GameOutput output) {
