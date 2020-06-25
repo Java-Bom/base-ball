@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-import static com.javabom.baseballgame.domain.BaseballNumbers.NUMBERS_PICK_SIZE;
+import static com.javabom.baseballgame.domain.BaseballNumbers.PICK_NUMBERS_SIZE;
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
@@ -20,7 +20,7 @@ public class BaseballNumbersFactory {
 
     public BaseballNumbers createRandomNumbers() {
         Collections.shuffle(numbers);
-        List<BaseballNumber> pickedNumbers = numbers.subList(0, NUMBERS_PICK_SIZE);
+        List<BaseballNumber> pickedNumbers = numbers.subList(0, PICK_NUMBERS_SIZE);
         return new BaseballNumbers(Collections.unmodifiableList(pickedNumbers));
     }
 

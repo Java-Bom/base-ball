@@ -1,13 +1,12 @@
 package com.javabom.baseballgame.domain;
 
 import java.util.*;
-import java.util.stream.Collectors;
 
 import static java.util.stream.Collectors.collectingAndThen;
 import static java.util.stream.Collectors.toList;
 
 public class BaseballNumbers {
-    public static final int NUMBERS_PICK_SIZE = 3;
+    public static final int PICK_NUMBERS_SIZE = 3;
     private final List<IndexedBaseballNumber> values;
 
     public BaseballNumbers(final List<BaseballNumber> values) {
@@ -28,14 +27,14 @@ public class BaseballNumbers {
     // 제 생각에는 이 생성자를 거침으로써 숫자들의 순서의 의미가 생긴다고 생각하여 이곳에서 인덱스를 부여해주었습니다.
 
     private void validateNumbersSize(List<BaseballNumber> values) {
-        if (values.size() != NUMBERS_PICK_SIZE) {
+        if (values.size() != PICK_NUMBERS_SIZE) {
             throw new IllegalArgumentException(String.format("야구 숫자의 개수는 반드시 3개입니다. 입력 개수 : %d", values.size()));
         }
     }
 
     private void validateDuplicatedNumbers(List<BaseballNumber> values) {
         int distinctNumberSize = new HashSet<>(values).size();
-        if (distinctNumberSize != NUMBERS_PICK_SIZE) {
+        if (distinctNumberSize != PICK_NUMBERS_SIZE) {
             throw new IllegalArgumentException(String.format("야구 숫자는 중복될 수 없습니다. 입력 값 : %s", values.toString()));
         }
     }
