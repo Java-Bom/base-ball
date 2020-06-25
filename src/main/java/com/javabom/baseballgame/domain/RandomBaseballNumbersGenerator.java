@@ -1,8 +1,6 @@
 package com.javabom.baseballgame.domain;
 
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Collectors;
 
@@ -14,15 +12,7 @@ public class RandomBaseballNumbersGenerator implements BaseballNumbersGenerator 
 
     @Override
     public BaseballNumbers generate() {
-        List<BaseballNumber> randomNumbers = createRandomNumbers();
-
-        Set<OrderedBaseballNumber> orderedBaseballNumbers = new HashSet<>();
-        for (int order = 1; order <= COUNT; order++) {
-            BaseballNumber baseballNumber = randomNumbers.get(order - 1);
-            OrderedBaseballNumber orderedNumber = OrderedBaseballNumber.of(Order.valueOf(order), baseballNumber);
-            orderedBaseballNumbers.add(orderedNumber);
-        }
-        return new BaseballNumbers(orderedBaseballNumbers);
+        return BaseballNumbers.of(createRandomNumbers());
     }
 
     private List<BaseballNumber> createRandomNumbers() {

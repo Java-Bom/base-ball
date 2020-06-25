@@ -1,6 +1,8 @@
 package com.javabom.baseballgame.domain;
 
 import java.util.Collections;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -23,6 +25,16 @@ public class BaseballNumbers {
         }
     }
 
+    public static BaseballNumbers of(final List<BaseballNumber> randomNumbers) {
+        Set<OrderedBaseballNumber> orderedBaseballNumbers = new HashSet<>();
+        for (int order = 1; order <= COUNT; order++) {
+            BaseballNumber baseballNumber = randomNumbers.get(order - 1);
+            OrderedBaseballNumber orderedNumber = OrderedBaseballNumber.of(Order.valueOf(order), baseballNumber);
+            orderedBaseballNumbers.add(orderedNumber);
+        }
+        return new BaseballNumbers(orderedBaseballNumbers);
+    }
+
     private boolean isDuplicate(final Set<OrderedBaseballNumber> values) {
         int uniqueNumber = Math.toIntExact(values.stream()
                 .map(OrderedBaseballNumber::getNumber)
@@ -38,7 +50,7 @@ public class BaseballNumbers {
     }
 
     public BaseballGameOutputs calculate(final BaseballNumbers baseballNumbers) {
-        return baseballNumbers.getValues().stream()
+        return baseballNumbers.values.stream()
                 .map(this::calculate)
                 .collect(Collectors.collectingAndThen(toList(), BaseballGameOutputs::new));
 
