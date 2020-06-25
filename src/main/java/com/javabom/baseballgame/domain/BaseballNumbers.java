@@ -2,16 +2,18 @@ package com.javabom.baseballgame.domain;
 
 import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import static com.javabom.baseballgame.domain.GameOutput.*;
+import static java.util.stream.Collectors.toList;
 
 public class BaseballNumbers {
-    private static final int COUNT = 3;
+    public static final int COUNT = 3;
     private final Set<OrderedBaseballNumber> values;
 
     public BaseballNumbers(final Set<OrderedBaseballNumber> values) {
         this.values = values;
-        if (values.size() != COUNT) {
+        if (this.values.size() != COUNT) {
             throw new IllegalArgumentException(
                     String.format("야구게임은 %d개의 숫자로 이루어져야합니다. 현재: %d 개", COUNT, values.size())
             );
@@ -35,7 +37,14 @@ public class BaseballNumbers {
         return uniqueNumber < COUNT || uniqueOrder < COUNT;
     }
 
-    public GameOutput calculate(final OrderedBaseballNumber number) {
+    public BaseballGameOutputs calculate(final BaseballNumbers baseballNumbers) {
+        return baseballNumbers.getValues().stream()
+                .map(this::calculate)
+                .collect(Collectors.collectingAndThen(toList(), BaseballGameOutputs::new));
+
+    }
+
+    private GameOutput calculate(final OrderedBaseballNumber number) {
         return values.stream()
                 .filter(baseballNumber -> baseballNumber.equalsNumber(number))
                 .findFirst()

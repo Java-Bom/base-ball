@@ -11,7 +11,7 @@ public class OutputView {
         System.out.println("컴퓨터가 숫자를 뽑았습니다.");
     }
 
-    public static boolean printGameOutputs(BaseballGameOutputs outputs) {
+    public static void printGameOutputs(BaseballGameOutputs outputs) {
         boolean isPresentStrike = outputs.countOf(STRIKE) > 0;
         boolean isPresentBall = outputs.countOf(BALL) > 0;
         boolean isPresentOut = outputs.countOf(OUT) > 0;
@@ -26,7 +26,6 @@ public class OutputView {
             System.out.printf("OUT %d\t", outputs.countOf(OUT));
         }
         System.out.println();
-        return outputs.countOf(STRIKE) != COUNT;
     }
 
     public static void printOf(final int tryCount) {

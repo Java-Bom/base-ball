@@ -1,6 +1,7 @@
 package com.javabom.baseballgame;
 
 import com.javabom.baseballgame.domain.BaseballGame;
+import com.javabom.baseballgame.domain.BaseballGameOutputs;
 import com.javabom.baseballgame.domain.BaseballNumbers;
 import com.javabom.baseballgame.domain.RandomBaseballNumbersGenerator;
 import com.javabom.baseballgame.view.InputView;
@@ -16,7 +17,9 @@ public class BaseballGameApplication {
         int tryCount = 0;
         while (isRemaining) {
             BaseballNumbers userNumbers = InputView.askUserNumbers();
-            isRemaining = OutputView.printGameOutputs(baseballGame.calculate(userNumbers));
+            BaseballGameOutputs outputs = baseballGame.calculate(userNumbers);
+            isRemaining = !outputs.isAllStrike();
+            OutputView.printGameOutputs(outputs);
             tryCount += 1;
         }
 
