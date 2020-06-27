@@ -1,7 +1,6 @@
-package com.javabom.baseballgame.domain.domain.machine;
+package com.javabom.baseballgame.domain.domain.game;
 
 import com.javabom.baseballgame.domain.domain.number.GameNumber;
-import com.javabom.baseballgame.domain.domain.number.OrderGameNumber;
 
 import java.util.List;
 

@@ -7,7 +7,7 @@ public class OrderGameNumber {
     private final int order;
     private final GameNumber gameNumber;
 
-    public OrderGameNumber(final int order, final GameNumber gameNumber) {
+    private OrderGameNumber(final int order, final GameNumber gameNumber) {
         this.order = order;
         this.gameNumber = gameNumber;
     }
@@ -16,7 +16,7 @@ public class OrderGameNumber {
         return new OrderGameNumber(order, number);
     }
 
-    public boolean equalsOfNumber(final OrderGameNumber orderGameNumber) {
+    public boolean equalsOnlyGameNumber(final OrderGameNumber orderGameNumber) {
         return this.gameNumber == orderGameNumber.gameNumber;
     }
 

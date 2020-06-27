@@ -15,7 +15,7 @@ class OrderGameNumberConverterTest {
 
     @DisplayName("순서가 있는 게임 숫자를 반환한다.")
     @Test
-    void covert() {
+    void covertTo() {
         //given
         List<GameNumber> gameNumbers = Arrays.asList(
                 GameNumber.of(1),
@@ -23,7 +23,7 @@ class OrderGameNumberConverterTest {
                 GameNumber.of(3));
 
         //when
-        List<OrderGameNumber> orderGameNumbers = OrderGameNumberConverter.covert(gameNumbers);
+        List<OrderGameNumber> orderGameNumbers = OrderGameNumberConverter.convertTo(gameNumbers);
 
         //then
         assertThat(orderGameNumbers.size()).isEqualTo(gameNumbers.size());

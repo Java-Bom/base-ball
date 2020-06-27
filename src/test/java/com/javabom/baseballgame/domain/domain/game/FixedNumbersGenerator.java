@@ -1,4 +1,4 @@
-package com.javabom.baseballgame.domain.domain.machine;
+package com.javabom.baseballgame.domain.domain.game;
 
 import com.javabom.baseballgame.domain.domain.number.GameNumber;
 

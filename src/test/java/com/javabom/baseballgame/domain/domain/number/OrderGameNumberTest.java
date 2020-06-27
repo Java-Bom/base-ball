@@ -17,7 +17,7 @@ public class OrderGameNumberTest {
         OrderGameNumber inputGameNumber = OrderGameNumber.of(order, GameNumber.of(number));
 
         //when
-        boolean actual = orderGameNumber.equalsOfNumber(inputGameNumber);
+        boolean actual = orderGameNumber.equalsOnlyGameNumber(inputGameNumber);
 
         //then
         assertThat(actual).isEqualTo(expected);

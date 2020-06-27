@@ -31,12 +31,9 @@ class MatchedResultsTest {
     @DisplayName("STRIKE가 3개면 true, 아니면 false를 반환한다.")
     @ParameterizedTest
     @CsvSource({"STRIKE, STRIKE, STRIKE,true", "STRIKE, STRIKE, BALL,false"})
-    void getSolvedStatus(String firstResult, String secondResult, String thirdResult, boolean expected) {
+    void getSolvedStatus(MatchedResult firstResult, MatchedResult secondResult, MatchedResult thirdResult, boolean expected) {
         //given
-        List<MatchedResult> matchedResultList = Arrays.asList(
-                MatchedResult.valueOf(firstResult),
-                MatchedResult.valueOf(secondResult),
-                MatchedResult.valueOf(thirdResult));
+        List<MatchedResult> matchedResultList = Arrays.asList(firstResult, secondResult, thirdResult);
 
         MatchedResults matchedResults = new MatchedResults(matchedResultList);
 

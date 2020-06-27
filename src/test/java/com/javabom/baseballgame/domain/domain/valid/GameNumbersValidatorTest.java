@@ -28,9 +28,9 @@ class GameNumbersValidatorTest {
     void checkDuplicate() {
         //given
         List<GameNumber> gameNumbers = Arrays.asList(
-                GameNumber.of("1"),
-                GameNumber.of("1"),
-                GameNumber.of("2"));
+                GameNumber.of(1),
+                GameNumber.of(1),
+                GameNumber.of(2));
 
         //then
         assertThatThrownBy(() -> GameNumbersValidator.checkDuplicate(gameNumbers))

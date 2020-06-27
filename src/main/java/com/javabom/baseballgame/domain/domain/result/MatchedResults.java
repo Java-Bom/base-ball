@@ -2,16 +2,15 @@ package com.javabom.baseballgame.domain.domain.result;
 
 import com.javabom.baseballgame.domain.domain.valid.GameNumbersValidator;
 
-import java.util.HashMap;
+import java.util.EnumMap;
 import java.util.List;
-import java.util.Map;
 
 public class MatchedResults {
-    private final Map<MatchedResult, Integer> matchedResults;
+    private final EnumMap<MatchedResult, Integer> matchedResults;
 
     public MatchedResults(final List<MatchedResult> matchedResultList) {
         checkCount(matchedResultList.size());
-        this.matchedResults = collect(matchedResultList);
+        this.matchedResults = createMatchedResults(matchedResultList);
     }
 
     private void checkCount(final int size) {
@@ -20,34 +19,19 @@ public class MatchedResults {
         }
     }
 
-    private Map<MatchedResult, Integer> collect(List<MatchedResult> matchedResultList) {
-        Map<MatchedResult, Integer> matchedResults = new HashMap<>();
+    private EnumMap<MatchedResult, Integer> createMatchedResults(List<MatchedResult> matchedResultList) {
+        EnumMap<MatchedResult, Integer> matchedResults = new EnumMap<>(MatchedResult.class);
         for (MatchedResult matchedResult : matchedResultList) {
-            matchedResults.put(matchedResult, findMatchedCount(matchedResults.get(matchedResult)));
+            matchedResults.put(matchedResult, matchedResults.getOrDefault(matchedResult, 0) + 1);
         }
         return matchedResults;
     }
 
-    private Integer findMatchedCount(final Integer currentMatchedCount) {
-        if (currentMatchedCount == null) {
-            return 1;
-        }
-        return currentMatchedCount + 1;
-    }
-
     public boolean getSolvedStatus() {
-        int matchedCount = getMatchedCountOf(MatchedResult.STRIKE);
-        return matchedCount == GameNumbersValidator.SIZE;
+        return getMatchedCountOf(MatchedResult.STRIKE) == GameNumbersValidator.SIZE;
     }
 
     public int getMatchedCountOf(MatchedResult matchedResult) {
-        if (matchedResults.get(matchedResult) == null) {
-            return 0;
-        }
-        return matchedResults.get(matchedResult);
-    }
-
-    public int size() {
-        return matchedResults.size();
+        return matchedResults.getOrDefault(matchedResult, 0);
     }
 }

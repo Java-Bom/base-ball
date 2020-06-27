@@ -1,8 +1,6 @@
 package com.javabom.baseballgame.domain.domain.number;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Objects;
+import java.util.*;
 
 public class GameNumber {
     public static final int MIN_NUMBER = 0;
@@ -24,25 +22,17 @@ public class GameNumber {
     }
 
     private static void checkRange(int gameNumber) {
-        if (isValid(gameNumber)) {
+        if (isNotRange(gameNumber)) {
             throw new IllegalArgumentException(String.format("%d, 숫자 게임에 사용되는 숫자는 0-9입니다.", gameNumber));
         }
     }
 
-    private static boolean isValid(int gameNumber) {
-        return gameNumber < MIN_NUMBER || gameNumber > MAX_NUMBER;
+    private static boolean isNotRange(int gameNumber) {
+        return !isRange(gameNumber);
     }
 
-    private static class GameNumberCache {
-        static final List<GameNumber> CACHE;
-
-        static {
-            CACHE = new ArrayList<>();
-
-            for (int number = MIN_NUMBER; number <= MAX_NUMBER; number++) {
-                CACHE.add(new GameNumber(number));
-            }
-        }
+    private static boolean isRange(int gameNumber) {
+        return gameNumber >= MIN_NUMBER && gameNumber <= MAX_NUMBER;
     }
 
     @Override
@@ -56,5 +46,17 @@ public class GameNumber {
     @Override
     public int hashCode() {
         return Objects.hash(gameNumber);
+    }
+
+    private static class GameNumberCache {
+        static final Map<Integer, GameNumber> CACHE;
+
+        static {
+            CACHE = new HashMap<>();
+
+            for (int number = MIN_NUMBER; number <= MAX_NUMBER; number++) {
+                CACHE.put(number, new GameNumber(number));
+            }
+        }
     }
 }

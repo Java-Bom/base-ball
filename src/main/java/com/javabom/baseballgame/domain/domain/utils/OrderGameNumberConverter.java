@@ -9,7 +9,7 @@ import java.util.stream.Collectors;
 
 public class OrderGameNumberConverter {
 
-    public static List<OrderGameNumber> covert(List<GameNumber> gameNumbers) {
+    public static List<OrderGameNumber> convertTo(List<GameNumber> gameNumbers) {
         final AtomicInteger idx = new AtomicInteger();
 
         return gameNumbers.stream()

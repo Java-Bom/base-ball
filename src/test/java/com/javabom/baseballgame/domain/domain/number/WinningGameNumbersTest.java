@@ -1,5 +1,6 @@
 package com.javabom.baseballgame.domain.domain.number;
 
+import com.javabom.baseballgame.domain.domain.result.MatchedResult;
 import com.javabom.baseballgame.domain.domain.result.MatchedResults;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -21,16 +22,15 @@ public class WinningGameNumbersTest {
                 GameNumber.of(3));
         WinningGameNumbers winningGameNumbers = new WinningGameNumbers(gameNumbers);
 
-        List<GameNumber> preClientGameNumbers = Arrays.asList(
-                GameNumber.of(1),
-                GameNumber.of(3),
-                GameNumber.of(5));
+        List<String> preClientGameNumbers = Arrays.asList("1", "3", "5");
         ClientGameNumbers clientGameNumbers = new ClientGameNumbers(preClientGameNumbers);
 
         //when
         MatchedResults matchedResults = winningGameNumbers.getMatchedResults(clientGameNumbers);
 
         //then
-        assertThat(matchedResults.size()).isEqualTo(3);
+        assertThat(matchedResults.getMatchedCountOf(MatchedResult.STRIKE)).isEqualTo(1);
+        assertThat(matchedResults.getMatchedCountOf(MatchedResult.BALL)).isEqualTo(1);
+        assertThat(matchedResults.getMatchedCountOf(MatchedResult.OUT)).isEqualTo(1);
     }
 }
