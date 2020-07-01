@@ -1,6 +1,7 @@
 package com.javabom.baseballgame.domain.domain.result;
 
-import com.javabom.baseballgame.domain.domain.valid.GameNumbersValidator;
+
+import com.javabom.baseballgame.domain.domain.number.ClientGameNumbers;
 
 import java.util.EnumMap;
 import java.util.List;
@@ -14,7 +15,7 @@ public class MatchedResults {
     }
 
     private void checkCount(final int size) {
-        if (size != GameNumbersValidator.SIZE) {
+        if (size != ClientGameNumbers.GAME_NUMBERS_COUNT) {
             throw new IllegalArgumentException(String.format("%d, 게임 결과는 총 3개가 들어와야 합니다.", size));
         }
     }
@@ -28,7 +29,7 @@ public class MatchedResults {
     }
 
     public boolean getSolvedStatus() {
-        return getMatchedCountOf(MatchedResult.STRIKE) == GameNumbersValidator.SIZE;
+        return getMatchedCountOf(MatchedResult.STRIKE) == ClientGameNumbers.GAME_NUMBERS_COUNT;
     }
 
     public int getMatchedCountOf(MatchedResult matchedResult) {
