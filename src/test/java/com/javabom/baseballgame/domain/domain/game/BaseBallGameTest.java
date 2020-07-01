@@ -1,5 +1,6 @@
 package com.javabom.baseballgame.domain.domain.game;
 
+import com.javabom.baseballgame.domain.domain.number.GameNumber;
 import com.javabom.baseballgame.domain.domain.result.MatchedResult;
 import com.javabom.baseballgame.domain.domain.result.MatchedResults;
 import org.junit.jupiter.api.DisplayName;
@@ -15,7 +16,8 @@ public class BaseBallGameTest {
     @Test
     void getMatchedResults() {
         //given
-        BaseBallGame baseBallGame = new BaseBallGame(new FixedNumbersGenerator());
+        GameNumbersGenerator gameNumbersGenerator = () -> Arrays.asList(GameNumber.of(1), GameNumber.of(2), GameNumber.of(3));
+        BaseBallGame baseBallGame = new BaseBallGame(gameNumbersGenerator);
 
         //when
         MatchedResults matchedResults = baseBallGame.getMatchedResults(Arrays.asList("1", "2", "3"));
