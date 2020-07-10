@@ -34,9 +34,7 @@ public class BaseballGameNumbers {
     }
 
     private void validDuplicatedBallNumber() {
-        long count = IntStream.rangeClosed(Order.ORDER_START, Order.ORDER_END)
-                .mapToObj(Order::valueOf)
-                .map(this::getBaseballGameNumber)
+        long count = baseballGameNumbers.stream()
                 .filter(this::hasDuplicatedBallNumber)
                 .count();
 
@@ -71,6 +69,9 @@ public class BaseballGameNumbers {
         return count > 1;
     }
 
+    public boolean isSameBaseBallNumber(final BaseballGameNumbers inputNumbers, final Order order) {
+        return getBaseballGameNumber(order).equals(inputNumbers.getBaseballGameNumber(order));
+    }
 
     public BaseballGameNumber getBaseballGameNumber(Order order) {
         return baseballGameNumbers.stream()
