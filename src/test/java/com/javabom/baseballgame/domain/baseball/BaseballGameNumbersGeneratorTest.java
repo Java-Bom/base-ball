@@ -19,6 +19,7 @@ class BaseballGameNumbersGeneratorTest {
     @DisplayName("입력한 숫자가 3개가 아닐 경우 예외.")
     @CsvSource(value = {"1,2,3,4", "1,2"})
     void generateNumbers(String input) {
+        // TODO 테스트 코드도 비즈니스 로직에 맞게 작성. 행동 위주로, 너두 단위로 하머ㅕㄴ 안됨.
         List<Integer> numbers = Arrays.stream(input.split(","))
                 .mapToInt(Integer::parseInt)
                 .boxed()

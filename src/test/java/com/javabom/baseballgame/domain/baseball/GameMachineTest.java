@@ -8,7 +8,6 @@ import org.junit.jupiter.api.Test;
 import java.util.Arrays;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 class GameMachineTest {
 
@@ -20,12 +19,11 @@ class GameMachineTest {
         BaseballGameNumbers allStrikeNumbers = BaseballGameNumbersGenerator.generateNumbers(Arrays.asList(1, 2, 3));
         BaseballGameNumbers allOutNumbers = BaseballGameNumbersGenerator.generateNumbers(Arrays.asList(4, 5, 6));
 
-
-        gameMachine.addInputNumbers(allStrikeNumbers);
-        assertThat(gameMachine.isFinish()).isTrue();
-
-        gameMachine.addInputNumbers(allOutNumbers);
+        gameMachine.tryNextGame(allOutNumbers);
         assertThat(gameMachine.isFinish()).isFalse();
+
+        gameMachine.tryNextGame(allStrikeNumbers);
+        assertThat(gameMachine.isFinish()).isTrue();
     }
 
     @Test
@@ -35,7 +33,7 @@ class GameMachineTest {
         GameMachine gameMachine = new GameMachine(correctNumbers);
         BaseballGameNumbers allStrike = BaseballGameNumbersGenerator.generateNumbers(Arrays.asList(1, 2, 3));
 
-        gameMachine.addInputNumbers(allStrike);
+        gameMachine.tryNextGame(allStrike);
         TryResult lastTryResult = gameMachine.getLastTryResult();
         assertThat(lastTryResult.getMatchResultCount(MatchResult.STRIKE)).isEqualTo(3);
     }
@@ -44,9 +42,9 @@ class GameMachineTest {
     @DisplayName("시도한 횟수를 반환하는지 확인.")
     void getTryCount() {
         GameMachine gameMachine = new GameMachine(BaseballGameNumbersGenerator.generateRandomNumbers());
-        gameMachine.addInputNumbers(BaseballGameNumbersGenerator.generateRandomNumbers());
-        gameMachine.addInputNumbers(BaseballGameNumbersGenerator.generateRandomNumbers());
-        gameMachine.addInputNumbers(BaseballGameNumbersGenerator.generateRandomNumbers());
+        gameMachine.tryNextGame(BaseballGameNumbersGenerator.generateRandomNumbers());
+        gameMachine.tryNextGame(BaseballGameNumbersGenerator.generateRandomNumbers());
+        gameMachine.tryNextGame(BaseballGameNumbersGenerator.generateRandomNumbers());
 
         assertThat(gameMachine.getTryCount()).isEqualTo(3);
     }

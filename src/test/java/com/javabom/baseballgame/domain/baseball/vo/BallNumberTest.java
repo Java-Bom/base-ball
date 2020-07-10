@@ -19,11 +19,4 @@ class BallNumberTest {
                 .hasMessage(String.format("입력한 숫자 : %d - %d~%d 사이의 숫자만 허용됩니다.",
                         value, BallNumber.NUMBER_START, BallNumber.NUMBER_END));
     }
-
-    @DisplayName("0~9사이의 VO 객체가 생성되는지 확인.")
-    @ParameterizedTest
-    @ValueSource(ints = {0, 9})
-    public void voRangeTest(int value) {
-        assertThat(BallNumber.valueOf(value).getValue()).isEqualTo(value);
-    }
 }

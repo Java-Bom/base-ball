@@ -70,7 +70,7 @@ class BaseballGameNumbersTest {
     public void getBaseballGameNumberTest() {
         BaseballGameNumbers baseballNumbers = getBaseballNumbers();
         Order order = Order.valueOf(2);
-        BaseballGameNumber baseballGameNumber = new BaseballGameNumber(2, order.getValue());
+        BaseballGameNumber baseballGameNumber = new BaseballGameNumber(2, 2);
 
         assertThat(baseballNumbers.getBaseballGameNumber(order)).isEqualTo(baseballGameNumber);
     }

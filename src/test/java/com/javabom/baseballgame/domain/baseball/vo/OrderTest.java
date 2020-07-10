@@ -19,12 +19,4 @@ class OrderTest {
                 .hasMessage(String.format("들어온 순서 : %d - %d~%d 사이의 순서만 허용됩니다.",
                         value, Order.ORDER_START, Order.ORDER_END));
     }
-
-    @ParameterizedTest
-    @DisplayName("0~2사이의 순서 값을 가진 vo객체를 생성하는지 확인.")
-    @ValueSource(ints = {0, 2})
-    public void voRangeTest(int value) {
-        assertThat(Order.valueOf(value).getValue()).isEqualTo(value);
-    }
-
 }
