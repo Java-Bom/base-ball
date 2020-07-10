@@ -7,8 +7,8 @@ import java.util.Objects;
 public class BallNumber {
 
     private final int value;
-    public final static int NUMBER_START = 0;
-    public final static int NUMBER_END = 9;
+    public static final int NUMBER_START = 0;
+    public static final int NUMBER_END = 9;
 
     private BallNumber(final int value) {
         this.value = value;
@@ -26,21 +26,18 @@ public class BallNumber {
         }
     }
 
-    public int getValue() {
-        return value;
-    }
 
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final BallNumber ballNumber = (BallNumber) o;
-        return getValue() == ballNumber.getValue();
+        return value == ballNumber.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getValue());
+        return Objects.hash(value);
     }
 
     private static class BallNumberCache {

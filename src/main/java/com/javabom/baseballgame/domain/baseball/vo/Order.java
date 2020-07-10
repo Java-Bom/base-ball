@@ -26,21 +26,17 @@ public class Order {
         }
     }
 
-    public int getValue() {
-        return value;
-    }
-
     @Override
     public boolean equals(final Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final Order order = (Order) o;
-        return getValue() == order.getValue();
+        return value == order.value;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getValue());
+        return Objects.hash(value);
     }
 
     private static class OrderCache {
