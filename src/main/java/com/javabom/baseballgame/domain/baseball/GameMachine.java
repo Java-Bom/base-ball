@@ -17,10 +17,12 @@ public class GameMachine {
         return isFinish;
     }
 
-    public void addInputNumbers(final BaseballGameNumbers inputNumbers) {
-        TryResult tryResult = new TryResult(correctNumbers, inputNumbers);
-        isFinish = tryResult.isAllStrike();
-        results.addResult(tryResult);
+    public void tryNextGame(final BaseballGameNumbers inputNumbers) {
+        results.addResult(new TryResult(correctNumbers, inputNumbers));
+
+        if (results.peek().isAllStrike()) {
+            isFinish = true;
+        }
     }
 
     public TryResult getLastTryResult() {
