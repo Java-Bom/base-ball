@@ -12,7 +12,7 @@ public class BaseballGameApplication {
         GameMachine gameMachine = new GameMachine(BaseballGameNumbersGenerator.generateRandomNumbers());
 
         while (!gameMachine.isFinish()) {
-            gameMachine.addInputNumbers(BaseballGameNumbersGenerator.generateNumbers(InputView.askNumbers()));
+            gameMachine.tryNextGame(BaseballGameNumbersGenerator.generateNumbers(InputView.askNumbers()));
             OutputView.printResult(gameMachine.getLastTryResult());
         }
 
