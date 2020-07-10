@@ -3,10 +3,11 @@ package com.javabom.baseballgame.domain.result;
 import com.javabom.baseballgame.domain.baseball.BaseballGameNumbers;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class TryResult {
 
-    private final HashMap<MatchResult, Integer> result = new HashMap<>();
+    private final Map<MatchResult, Integer> result = new HashMap<>();
 
     public TryResult(final BaseballGameNumbers correctNumbers, final BaseballGameNumbers baseballGameNumbers) {
         for (MatchResult matchResult : MatchResult.values()) {

@@ -1,11 +1,12 @@
 package com.javabom.baseballgame.domain.result;
 
+import java.util.ArrayList;
 import java.util.EmptyStackException;
-import java.util.Stack;
+import java.util.List;
 
 public class TryResults {
 
-    private final Stack<TryResult> results = new Stack<>();
+    private final List<TryResult> results = new ArrayList<>();
 
     public void addResult(TryResult tryResult) {
         results.add(tryResult);
@@ -16,7 +17,7 @@ public class TryResults {
             throw new EmptyStackException();
         }
 
-        return results.peek();
+        return results.get(results.size()-1);
     }
 
     public int size() {
